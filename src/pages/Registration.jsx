@@ -17,25 +17,24 @@ export default function Registration() {
   const {error, loading, users, tokenr, values} = useSelector(state => state.reg);
   const [tokr, setTokr] = useState(tokenr)
   const {fetchRegistr} = useActions()
-  
+
+  useEffect(() => {
+    if(localStorage.getItem('myToken')) {
+      setTokr(localStorage.getItem('myToken'));
+    }
+console.log(tokr)
+  }, [tokr])
 
   const handleRegistr = (e) => {
     e.preventDefault();
     values.email = emailIn
     values.password = passwordIn
-    values.firstName = firstNameIn
-    values.lastName = lastNameIn
-    values.Accept = 'application/json'
-    values.Accept = 'application/json'
 
-    if(localStorage.getItem('myToken')) {
-      setTokr(localStorage.getItem('myToken'));
-      values.Authorization = 'Bearer ' + tokr
-    } 
+
     
-    fetchRegistr(values, 'https://sf-final-project-be.herokuapp.com/api/officers')
+    fetchRegistr(values,  'https://sf-final-project-be.herokuapp.com/api/officers')
   }  
-
+  
   return (
     <div className='container registration'>
       <div className="form-wrapper">

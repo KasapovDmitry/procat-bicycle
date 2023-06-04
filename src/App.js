@@ -8,7 +8,7 @@ import { store } from './store';
 import { keyId } from './key';
 
 function App() {
-  const [isAuth, setIsAuth] = useState(null);
+  const [isAuth, setIsAuth] = useState(true);
 
   useEffect(() => {
     if(localStorage.getItem('auth')) {
@@ -19,7 +19,6 @@ function App() {
     <div className="sait">
       <Provider 
       store={store}
-      setIsAuth={isAuth}
       >
           <MyHeader />
           <BrowserRouter>

@@ -9,16 +9,13 @@ export default function Personal() {
   const {fetchUsers} = useActions()
 
   useEffect(() => {
-    if(localStorage.getItem('myToken')) {
-      setTok(localStorage.getItem('myToken'));
-     
-    }
-     fetchUsers(tok, 'get', 'https://sf-final-project-be.herokuapp.com/api/officers/');
-  }, [])
-
+    setTok(localStorage.getItem('myToken'));
+    fetchUsers(tok, 'get', 'https://sf-final-project-be.herokuapp.com/api/officers/');
+  }, [tok, error])
+  
   if (loading) {
     return (
-      <main className="main"> 
+      <main className="main">
       <div className='container container-person'>
       <h1 className="page__title">Все сотрудники</h1>
       <p>Идет загрузка...</p>

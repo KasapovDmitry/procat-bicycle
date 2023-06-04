@@ -14,9 +14,9 @@ export const regReducer = (state, action) => {
     console.log(state) // тут всегда initialState, даже если записать что-то
     switch (action.type) {
         case FETCH_REG:
-            return {loading: true, error: null, values: action.payload}
+            return {loading: true, error: null, values: {}}
         case FETCH_REG_SUCCSESS: {
-            return {loading: false, error: null, values: {}, token: null }
+            return {loading: false, error: null, values: action.payload, tokenr: '' }
         }
         case FETCH_REG_ERROR:
             return {loading: false, error: action.payload, values: {}}
